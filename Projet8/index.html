@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style.css">
+  <title>Project 8</title>
+</head>
+<body>
+  <div class="stopWatch">
+    <h1 class="time">00:00:00</h1>
+    <div class="controls">
+      <img src="Artboard 2 copy.png" onclick="stopTimer()" alt="stop">
+      <img src="Artboard 2.png "onclick="startTimer()" alt="start">
+      <img src="Artboard 2 copy 2.png"onclick="resetTimer()" alt="reset">
+    </div>
+  </div>
+  <script>
+    let timeEl = document.querySelector(".time");
+    let timer = null;
+    let [hr,mn,sc] = [0,0,0];
+
+    function stopWatch(){
+      sc++;
+      if (sc ==60) {
+        sc = 0;
+        mn++;
+        if (mn == 60) {
+          mn = 0 ;
+          hr++;
+        }
+      }
+      let h = hr<10 ? ("0"+hr):hr;
+      let m = mn<10 ? ("0"+mn):mn;
+      let s = sc<10 ? ("0"+sc):sc;
+      timeEl.innerHTML = h+":"+m+":"+s;
+    }
+    function startTimer(){
+      if (timer!=null) {
+        clearInterval(timer);
+      }
+      timer = setInterval(stopWatch,1000);
+      console.log(timer);
+    }
+    function stopTimer() {
+      clearInterval(timer);
+      console.log(timer);
+    }
+    function resetTimer(){
+      clearInterval(timer);
+      [hr,mn,sc]=[0,0,0];
+      timeEl.innerHTML = "00:00:00";
+      console.log(timer);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(48, 48, 48);
+  font-family: monospace;
+}
+.stopWatch{
+  background-color: rgba(255, 235, 205, 0.814);
+  width: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+}
+h1{
+ font-size: 60px;
+}
+.controls{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.controls img:not(:nth-child(2)){
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+}
+.controls img:nth-child(2) {
+  height: 150px;
+  width: 150px;
+  cursor: pointer;
+}

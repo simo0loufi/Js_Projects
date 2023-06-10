@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet03</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Counter</h1>
+    <p class="count">0</p>
+    <div class="counters">
+      <button class="btn dec">Decrease</button>
+      <button class="btn inc">Increase</button>
+    </div>
+    <button class="reset">Reset</button>
+  </div>
+  <script>
+    const prevEl = document.querySelector(".dec");
+    const nextEl = document.querySelector(".inc");
+    const resetEl = document.querySelector(".reset");
+    const buttons = document.querySelector(".btn");
+    const countEl = document.querySelector(".count");
+    let counts = 0 ; 
+    prevEl.addEventListener("click",decrease);
+    nextEl.addEventListener("click",increase);
+    resetEl.addEventListener("click",reset);
+    function increase() {
+      counts++;
+      countEl.innerHTML = counts;
+      if (counts>0) {
+        countEl.style.color="green";
+      }
+       if (counts == 0) {
+        countEl.style.color = "black";
+      }
+    }
+
+    function decrease() {
+        counts--;
+        countEl.innerHTML = counts;
+        if (counts < 0) {
+          countEl.style.color = "red";
+        }
+        if (counts == 0) {
+          countEl.style.color = "black";
+        }
+      }
+
+    function reset() {
+        counts=0;
+        countEl.innerHTML = counts;
+        
+          countEl.style.color = "black";
+        
+    }
+  </script>
+</body>
+</html>

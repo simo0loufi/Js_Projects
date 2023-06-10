@@ -1,0 +1,44 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(75, 75, 75);
+}
+h1{
+  color: wheat;
+  font-size: 100px;
+}
+.cursor{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: skyblue;
+  pointer-events: none;
+  box-shadow: 0 0 20px skyblue
+              0 0 60px skyblue
+              0 0 100px skyblue;
+  z-index: 99;
+  display: none;
+  position: fixed;
+  transform: translate(-50%,-50%);
+  animation: colors 3s infinite;
+}
+@keyframes colors{
+  0%{
+    filter: hue-rotate(0deg);
+  }
+  100%{
+    filter: hue-rotate(360deg);
+  }
+}
+.cursor::before{
+  content: "";
+  position: absolute;
+  transform: translate(-30%,-30%);
+  width:50px;
+  height: 50px;
+  background: skyblue;
+  border-radius: 50%;
+  opacity: 0.2;
+}

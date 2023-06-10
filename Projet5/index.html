@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style.css">
+  <title>Projet 5</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Random Joke</h1>
+    <img src="" alt="emoji Joke">
+    <p class="joke fade">
+      Click on the "Generate" to get the joke.
+    </p>
+    <button class="btn">Generate</button>
+  </div>
+  <script>
+    const btnEl = document.querySelector(".btn");
+    const jokeEl = document.querySelector(".joke");
+    var URL = "https://v2.jokeapi.dev/joke/Any?type=single&amount=1"
+    btnEl.addEventListener("click",getMethod);
+
+    async function getMethod(){
+      jokeEl.classList.remove("fade");
+      const data = await fetch(URL).then((e)=> e.json());
+      if(data){
+        console.log(data);
+        jokeEl.innerHTML = data.joke;
+        jokeEl.classList.add("fade");
+      }
+    }
+  </script>
+</body>
+</html>

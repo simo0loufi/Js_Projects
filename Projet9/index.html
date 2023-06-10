@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style.css">
+  <title>Project 9</title>
+</head>
+<body>
+  <div class="image-container">
+    <span style="--i: 1">
+      <img src="Artboard 1.png" alt="">
+    </span>
+    <span style="--i: 2">
+      <img src="Artboard 3.png" alt="">
+    </span>
+    <span style="--i: 3">
+      <img src="Artboard 4.png" alt="">
+    </span>
+    <span style="--i: 4">
+      <img src="Artboard 7.png" alt="">
+    </span>
+    <span style="--i: 5">
+      <img src="Asset 3-100.jpg" alt="">
+    </span>
+    <span style="--i: 6">
+      <img src="sacc.png" alt="">
+    </span>
+    <span style="--i: 7">
+      <img src="sacd.png" alt="">
+    </span>
+    <span style="--i: 8">
+      <img src="sdcf.png" alt="">
+    </span>
+  </div>
+  <div class="buttons">
+    <button class="btn prev">Prev</button>
+    <button class="btn next">Next</button>
+  </div>
+  <script>
+    const imageContainerEl = document.querySelector(".image-container");
+    const prevEl = document.querySelector(".prev");
+    const nextEl = document.querySelector(".next");
+    let x = 0;
+    timer = 0;
+    prevEl.addEventListener("click",()=>{
+      x = x + 45;
+      clearTimeout(timer);
+      updatContainer();
+    })
+    
+    nextEl.addEventListener("click",()=>{
+      x = x - 45;
+      clearTimeout(timer);
+      updatContainer();
+    })
+
+    function updatContainer(){
+      imageContainerEl.style.transform=`perspective(1000px) rotateY(${x}deg)`;
+
+      timer =setTimeout(()=>{
+        x = x - 45;
+        updatContainer();
+      },2000)
+    }
+    updatContainer();
+  </script>
+</body>
+</html>

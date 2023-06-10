@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style.css">
+  <title>Project 7</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">TO-Do List</h1>
+    <div class="todo-list-bar">
+      <input type="text" id="task" placeholder="..." autocomplete="off">
+      <button class="addBtn" onclick="clicked()">Add</button>
+    </div>
+    <ul class="lists"></ul>
+  </div>
+  <script>
+    const taskEl = document.querySelector("#task");
+    const listEl = document.querySelector(".lists");
+
+    function clicked(){
+      if (taskEl.value=="") {
+        alert("Task should not be empty")
+      }else{
+        let li = document.createElement("li");
+        li.innerHTML = taskEl.value;
+        listEl.appendChild(li);
+        taskEl.value="";
+        let span = document.createElement("span");
+        span.innerHTML ="\u00d7";
+        li.appendChild(span);
+      }
+      saveData();
+    }
+    listEl.addEventListener("click",(e)=>{
+      if (e.target.tagName==="LI") {
+        e.target.classList.toggle("chaked");
+      } else if(e.target.tagName ==="SPAN"){
+        e.target.parentElement.remove();
+      }
+      saveData();
+    })
+    function saveData(){
+      localStorage.setItem("data",listEl.innerHTML);
+    }
+    function getData(){
+      listEl.innerHTML = localStorage.getItem("data");
+    }
+    getData();
+  </script>
+</body>
+</html>
