@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet01</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>
+      A MSg
+    </h1>
+    <input type="text">
+    <div class="btn">Submit</div>
+    <p class="error">Pleas enter a Value</p>
+    <h3>Last Msg Delivered...!</h3>
+    <p class="Msg"></p>
+  </div>
+  <script>
+    const btnEl = document.querySelector(".btn");
+    const inputEl = document.querySelector("input");
+    const msgEl = document.querySelector(".Msg");
+    const errorEl = document.querySelector(".error");
+
+    btnEl.addEventListener("click",displayMessage);
+    function displayMessage(){
+      if(inputEl.value){
+        msgEl.textContent = inputEl.value;
+        inputEl.value="";
+      }else{
+        errorEl.style.display="block";
+        setInterval(()=>{
+          errorEl.style.display="none";
+        },5000)
+      }
+    }
+  </script>
+</body>
+</html>
